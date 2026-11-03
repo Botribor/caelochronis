@@ -1,0 +1,39 @@
+name: Aggiorna dati meteo Aetheris
+
+on:
+  schedule:
+    - cron: '*/20 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aetheris-weather-update
+  cancel-in-progress: false
+
+jobs:
+  publish-weather:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Scarica il sito
+        uses: actions/checkout@v4
+      - name: Prepara Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Leggi la stazione IDALMI6
+        env:
+          WU_API_KEY: ${{ secrets.WU_API_KEY }}
+        run: python scripts/fetch_weather.py
+      - name: Pubblica il JSON aggiornato
+        run: |
+          if [ -f data/latest.json ] && { ! git diff --quiet -- data/latest.json || [ -n "$(git ls-files --others --exclude-standard data/latest.json)" ]; }; then
+            git config user.name 'aetheris-weather-bot'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add data/latest.json
+            git commit -m 'Aggiorna osservazioni meteo IDALMI6'
+            git push
+          else
+            echo 'Nessun aggiornamento da pubblicare.'
+          fi
