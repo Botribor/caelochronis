@@ -1,4 +1,4 @@
-name: Aggiorna dati meteo Aetheris
+name: Aggiorna dati meteo Caelochronis
 
 on:
   schedule:
