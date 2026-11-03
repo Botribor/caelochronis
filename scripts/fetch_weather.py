@@ -20,6 +20,32 @@ def num(v):
     except (TypeError, ValueError):
         return None
 
+
+def append_hourly_history(record, observed_at):
+    """Una osservazione reale per ora UTC, in file mensili pubblici."""
+    directory = Path("data/history")
+    directory.mkdir(parents=True, exist_ok=True)
+    archive = directory / (observed_at.strftime("%Y-%m") + ".json")
+    rows = []
+    if archive.exists():
+        try:
+            rows = json.loads(archive.read_text(encoding="utf-8"))
+            if not isinstance(rows, list):
+                raise ValueError("Archivio non valido.")
+        except (ValueError, OSError):
+            print("Archivio storico esistente non leggibile: non lo sovrascrivo.")
+            return 1
+    hour = observed_at.strftime("%Y-%m-%dT%H")
+    for row in rows:
+        if isinstance(row, dict) and str(row.get("observedAt", "")).startswith(hour):
+            print("Ora già registrata nello storico.")
+            return 0
+    rows.append(record)
+    rows.sort(key=lambda row: row.get("observedAt", ""))
+    archive.write_text(json.dumps(rows, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"Storico aggiornato: {archive}")
+    return 0
+
 def main():
     key = os.environ.get("WU_API_KEY", "").strip()
     if not key:
@@ -79,11 +105,11 @@ def main():
     OUTPUT.parent.mkdir(exist_ok=True, parents=True)
     contents = json.dumps(record, ensure_ascii=False, indent=2) + "\n"
     if OUTPUT.exists() and OUTPUT.read_text(encoding="utf-8") == contents:
-        print("I dati non sono cambiati.")
-        return 0
-    OUTPUT.write_text(contents, encoding="utf-8")
-    print(f"Osservazione pubblicabile: {record['observedAt']}")
-    return 0
+        print("I dati attuali non sono cambiati.")
+    else:
+        OUTPUT.write_text(contents, encoding="utf-8")
+        print(f"Osservazione pubblicabile: {record['observedAt']}")
+    return append_hourly_history(record, dt)
 
 if __name__ == "__main__":
     sys.exit(main())
