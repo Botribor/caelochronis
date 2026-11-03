@@ -58,7 +58,7 @@ def main():
     })
     # ATTENZIONE: non stampare l'URL, contiene la chiave privata.
     url = "https://api.weather.com/v2/pws/observations/current?" + params
-    req = urllib.request.Request(url, headers={"User-Agent": "AetherisWeather/1.0"})
+    req = urllib.request.Request(url, headers={"User-Agent": "CaelochronisWeather/1.0"})
     try:
         with urllib.request.urlopen(req, timeout=20) as response:
             payload = json.load(response)
