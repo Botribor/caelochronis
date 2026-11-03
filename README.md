@@ -14,9 +14,13 @@ Sito pubblico dell'Osservatorio Aetheris, Dalmine (BG).
 4. Apri **Actions → Aggiorna dati meteo Aetheris → Run workflow** per il primo aggiornamento.
 5. In seguito il workflow tenta un aggiornamento ogni circa **20 minuti** (la pianificazione GitHub non è garantita al minuto).
 
-Il workflow `.github/workflows/weather.yml` esegue `scripts/fetch_weather.py` e pubblica nel repository soltanto `data/latest.json`: temperatura, umidità, pressione, vento, pioggia, UV, radiazione solare e punto di rugiada. La chiave API non viene pubblicata.
+Il workflow `.github/workflows/weather.yml` esegue `scripts/fetch_weather.py` e pubblica nel repository `data/latest.json` e un archivio mensile in `data/history/YYYY-MM.json`, contenenti esclusivamente osservazioni meteorologiche pubbliche. La chiave API non viene pubblicata.
 
 La dashboard aggiorna il JSON quando è disponibile e segnala se i dati sono assenti o troppo vecchi. Il widget Weathercloud resta indipendente.
+
+## Grafici storici automatici
+
+La sezione **Grafici** legge soltanto i campioni reali di IDALMI6 dall'archivio mensile e permette il confronto su **24 ore, 7 giorni e 30 giorni** per temperatura, umidità, pressione, vento e pioggia giornaliera cumulata. Non vengono inventati campioni mancanti e i grafici iniziano dal primo campione effettivamente salvato. Lo storico conserva circa un campione all'ora, mentre la dashboard utilizza osservazioni più recenti quando disponibili.
 
 ## Archivio
 
