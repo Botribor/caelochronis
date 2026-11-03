@@ -1,6 +1,6 @@
-# Osservatorio Aetheris
+# Caelochronis — Stazione Meteorologica Indipendente
 
-Sito pubblico dell'Osservatorio Aetheris, Dalmine (BG).
+Sito pubblico di Caelochronis, stazione meteorologica indipendente a Dalmine (BG).
 
 - Sito: https://botribor.github.io/osservatorio-aetheris/
 - Weathercloud: https://app.weathercloud.net/d0069384413
@@ -11,7 +11,7 @@ Sito pubblico dell'Osservatorio Aetheris, Dalmine (BG).
 1. Crea una **API Key** per la tua stazione in https://www.wunderground.com/member/api-keys (diversa dalla Station Key usata dalla console Bresser).
 2. Apri GitHub → **Settings → Secrets and variables → Actions → New repository secret**.
 3. Nome del secret: `WU_API_KEY`. Valore: la chiave API ottenuta da Weather Underground. **Non inserirla in file, commit, issue o chat.**
-4. Apri **Actions → Aggiorna dati meteo Aetheris → Run workflow** per il primo aggiornamento.
+4. Apri **Actions → Aggiorna dati meteo Caelochronis → Run workflow** per il primo aggiornamento.
 5. In seguito il workflow tenta un aggiornamento ogni circa **20 minuti** (la pianificazione GitHub non è garantita al minuto).
 
 Il workflow `.github/workflows/weather.yml` esegue `scripts/fetch_weather.py` e pubblica nel repository `data/latest.json` e un archivio mensile in `data/history/YYYY-MM.json`, contenenti esclusivamente osservazioni meteorologiche pubbliche. La chiave API non viene pubblicata.
@@ -27,3 +27,11 @@ La sezione **Grafici** legge soltanto i campioni reali di IDALMI6 dall'archivio 
 I CSV esportati da Weathercloud vengono elaborati soltanto nel browser; conserva sempre una copia dei CSV originali. I riepiloghi salvati nel browser non costituiscono un archivio permanente.
 
 Le rilevazioni sono amatoriali e non sostituiscono i bollettini ufficiali o gli avvisi di Protezione Civile.
+
+## Identità grafica
+
+Marchio pubblico: **Caelochronis — Stazione Meteorologica Indipendente**. Motto: *Il cielo, un dato alla volta.*
+Il nuovo emblema e la favicon sono in `assets/logo-caelochronis.webp` e `assets/favicon-caelochronis.webp`.
+Gli identificativi tecnici IDALMI6 e Weathercloud d0069384413 rimangono invariati.
+
+La vecchia denominazione può comparire ancora nell'URL GitHub e nei nomi interni dei workflow per compatibilità con i collegamenti esistenti. Le osservazioni storiche non vengono cancellate.
