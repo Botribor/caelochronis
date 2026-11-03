@@ -1,4 +1,4 @@
-/* Osservatorio Aetheris — grafici storici basati esclusivamente sulle osservazioni pubblicate. */
+/* Caelochronis — grafici storici basati esclusivamente sulle osservazioni pubblicate. */
 (() => {
   'use strict';
   const root = document.querySelector('#andamenti');
