@@ -217,6 +217,95 @@ body{background:radial-gradient(ellipse at 50% 0%,#16395e 0,#071b32 38%,#041124 
 .stats-card,.feature-overview,.climate-summary-card{padding:13px}
 }
 
+
+/* Homepage Caelochronis: due sorgenti meteo affiancate, valori da IDALMI6 */
+.dual-heading{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 0 19px;padding:8px 0;border-bottom:1px solid rgba(235,192,118,.24)}
+.dual-heading:before,.dual-heading:after{content:"";height:1px;flex:1;max-width:355px;background:linear-gradient(90deg,transparent,#dbad60)}
+.dual-heading:after{transform:scaleX(-1)}
+.dual-heading>span{font-size:27px;color:var(--gold);line-height:1}
+.dual-heading h2{font:500 clamp(27px,3vw,40px) Georgia,serif;color:#f3cc84;margin:0;white-space:nowrap}
+#misure .source-duo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:17px;align-items:stretch}
+.source-main-card{min-width:0;min-height:320px;display:flex;flex-direction:column;background:linear-gradient(145deg,#0d2c4b,#06182e 85%);border:1px solid #d6a45d;border-radius:16px;padding:17px 18px;box-shadow:0 9px 25px rgba(0,0,0,.19)}
+.source-card-header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid rgba(238,191,116,.26);padding-bottom:12px;margin-bottom:13px}
+.source-brand{display:flex;align-items:center;gap:10px;min-width:0}
+.source-brand h3{font:600 clamp(18px,1.65vw,24px) Georgia,serif;white-space:nowrap;margin:0;color:#fff4e3}
+.source-card-header>a{font-size:12px;color:#ebc684;white-space:nowrap}
+.source-card-header>a:hover{text-decoration:underline}
+.source-mark{width:39px;height:39px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;background:#0c2640;border:1px solid rgba(212,174,112,.35);border-radius:12px;font-weight:800;font-size:16px}
+.underground-mark{color:#fbac62;letter-spacing:-.06em}
+.weathercloud-mark{color:#70d3ff;font-size:27px}
+.underground-overview{display:grid;grid-template-columns:1.05fr .95fr;gap:17px;align-items:center;flex:1}
+.underground-primary{text-align:center;padding:13px 12px 14px;background:radial-gradient(circle at 33% 20%,rgba(102,157,202,.21),transparent 65%),linear-gradient(130deg,#103c5d,#0b2949);border:1px solid rgba(229,185,115,.20);border-radius:13px}
+.underground-thermo{display:flex;align-items:center;justify-content:center;gap:12px}
+.underground-thermo>span:first-child{font-size:48px;filter:drop-shadow(0 2px 10px #091c30)}
+.underground-thermo .current-hero-value{font-size:clamp(42px,4.5vw,74px)}
+.underground-primary p{margin:8px 0 3px;color:#f2ece5;font-size:13px}
+.under-info{font-size:10px;color:#b0c4d4}
+.underground-details{margin:0}
+.underground-details>div{display:flex;align-items:center;justify-content:space-between;gap:8px;border-bottom:1px solid rgba(213,185,141,.20);padding:11px 0}
+.underground-details dt{font-size:13px;color:#ccdae4}
+.underground-details dd{margin:0;font:600 15px Georgia,serif;color:#f6e2c3;white-space:nowrap}
+.source-card-footer{font-size:10px;color:#a5bed0;margin-top:auto;padding-top:13px;line-height:1.55}
+.cloud-widget-region{display:flex;align-items:center;flex:1;min-height:176px}
+.cloud-card #sticker-container{margin:0;width:100%;min-height:165px;padding:8px;background:linear-gradient(145deg,#102c46,#091a2e);border-radius:11px}
+.cloud-card .widget-content{min-height:152px;align-items:center}
+.cloud-card .widget-content>a{width:100%;display:flex;justify-content:center}
+.cloud-card .weathercloud-widget img{width:auto;max-width:100%;max-height:194px;min-height:0;object-fit:contain}
+.cloud-card .widget-content iframe{width:100%;max-width:100%;height:200px}
+.cloud-card .source-actions{margin-top:9px}
+.cloud-card .source-actions .small-button{font-size:11px;padding:8px 10px}
+.metric-band-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:20px 0 10px}
+.metric-band-heading h3{font:500 19px Georgia,serif;margin:0;color:#f2deb9}
+.metric-band-heading span{font-size:11px;color:#abbfce}
+#misure>.metric-panel{padding:9px 6px}
+#misure .metrics{grid-template-columns:repeat(8,minmax(0,1fr));height:auto}
+#misure .metric{min-height:113px;border-right:1px solid rgba(231,194,133,.24);border-bottom:0;padding:12px 7px}
+#misure .metric:nth-child(4n){border-right:1px solid rgba(231,194,133,.24)}
+#misure .metric:last-child{border-right:0}
+#misure .metric-value{font-size:clamp(16px,1.8vw,25px)}
+.feature-row{grid-template-columns:repeat(4,minmax(0,1fr))}
+.feature-card{min-height:164px}
+.feature-card:nth-child(1)::before{background:radial-gradient(circle at 74% 12%,rgba(107,176,227,.24),transparent 56%),repeating-linear-gradient(90deg,transparent,transparent 23px,rgba(132,195,229,.07) 24px),#0c223e}
+.feature-card:nth-child(2)::before{background:radial-gradient(circle at 70% 30%,rgba(235,177,105,.25),transparent 60%),#111c2b}
+.feature-card:nth-child(3)::before{background:linear-gradient(18deg,rgba(3,22,41,.91),rgba(51,60,80,.35)),url("https://commons.wikimedia.org/wiki/Special:FilePath/Bergamo_Banner_citt%C3%A0_alta.jpg") center/cover}
+.feature-card:nth-child(4)::before{background:radial-gradient(circle at 65% 25%,rgba(147,212,228,.25),transparent 57%),#09334a}
+@media(max-width:1120px){
+ #misure .source-duo{grid-template-columns:1fr 1fr}
+ .underground-overview{grid-template-columns:1fr;gap:7px}
+ .underground-details{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+ .underground-details>div{padding:8px 0}
+ #misure .metrics{grid-template-columns:repeat(4,minmax(0,1fr))}
+ #misure .metric:nth-child(4n){border-right:0}
+ #misure .metric:nth-child(-n+4){border-bottom:1px solid rgba(231,194,133,.2)}
+}
+@media(max-width:790px){
+ #misure .source-duo{grid-template-columns:1fr}
+ .underground-overview{grid-template-columns:1fr 1fr}
+ .underground-details{display:block}
+ .source-main-card{min-height:unset}
+ .source-brand h3{font-size:21px}
+ .feature-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:520px){
+ .dual-heading{gap:7px}
+ .dual-heading h2{font-size:26px}
+ .dual-heading>span{font-size:19px}
+ .source-main-card{padding:12px 13px}
+ .source-brand h3{font-size:17px}
+ .source-card-header>a{font-size:11px}
+ .underground-overview{grid-template-columns:1fr}
+ .underground-thermo .current-hero-value{font-size:53px}
+ .underground-details{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+ .underground-details>div{flex-direction:column;align-items:flex-start;gap:5px}
+ #misure .metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #misure .metric{min-height:94px;border-right:1px solid rgba(231,194,133,.24);border-bottom:1px solid rgba(231,194,133,.2)}
+ #misure .metric:nth-child(2n){border-right:0}
+ #misure .metric:nth-child(4n){border-right:0}
+ #misure .metric:nth-child(n+7){border-bottom:0}
+ #misure .metric-value{font-size:22px}
+ .feature-card{min-height:145px}
+}
+
 </style>
 <meta name="theme-color" content="#071625">
 <meta property="og:type" content="website">
@@ -252,39 +341,65 @@ body{background:radial-gradient(ellipse at 50% 0%,#16395e 0,#071b32 38%,#041124 
   <a href="#archivio"><span class="nav-icon">▤</span> Archivio</a>
   <a href="#clima"><span class="nav-icon">◇</span> Clima di Dalmine</a>
   <a href="#stazione"><span class="nav-icon">◎</span> La stazione</a>
-  <a href="#online"><span class="nav-icon">☁</span> Reti meteo</a>
+  <a href="#online"><span class="nav-icon">☁</span> Weathercloud</a>
  </div>
 </nav>
 
 <main>
 
-<section class="container dashboard-top" id="misure" aria-label="Condizioni meteorologiche attuali">
- <div class="dashboard-grid">
-  <article class="current-panel">
-   <h2>Condizioni attuali</h2>
-   <div class="current-hero">
-    <div class="current-hero-value"><span id="hero-temp">—</span><small> °C</small></div>
-    <div class="current-hero-icon" aria-hidden="true">☀</div>
-   </div>
-   <div class="current-info">Temperatura rilevata dalla stazione · non è una previsione</div>
-   <div class="current-location"><span>📍 Dalmine, Bergamo</span><span>Station ID: IDALMI6</span></div>
-  </article>
-  <div class="metric-panel"><div class="metrics">
-   <div class="metric"><div class="metric-icon" aria-hidden="true">♨</div><div class="metric-title">Temperatura</div><div class="metric-value" id="temp">— <small>°C</small></div><div class="metric-note">Esterna</div></div>
-   <div class="metric"><div class="metric-icon" aria-hidden="true">♧</div><div class="metric-title">Umidità</div><div class="metric-value" id="humidity">— <small>%</small></div><div class="metric-note">Relativa</div></div>
-   <div class="metric"><div class="metric-icon" aria-hidden="true">◉</div><div class="metric-title">Pressione</div><div class="metric-value" id="pressure">— <small>hPa</small></div><div class="metric-note">Atmosferica</div></div>
-   <div class="metric"><div class="metric-icon" aria-hidden="true">≋</div><div class="metric-title">Vento</div><div class="metric-value" id="wind">— <small>km/h</small></div><div class="metric-note">Velocità</div></div>
-   <div class="metric"><div class="metric-icon" aria-hidden="true">☂</div><div class="metric-title">Pioggia</div><div class="metric-value" id="rain">— <small>mm</small></div><div class="metric-note">Accumulo odierno</div></div>
-   <div class="metric"><div class="metric-icon" aria-hidden="true">☼</div><div class="metric-title">Indice UV</div><div class="metric-value" id="uv">—</div><div class="metric-note">Ultravioletti</div></div>
-   <div class="metric"><div class="metric-icon" aria-hidden="true">✺</div><div class="metric-title">Radiazione</div><div class="metric-value" id="solar">— <small>W/m²</small></div><div class="metric-note">Solare</div></div>
-   <div class="metric"><div class="metric-icon" aria-hidden="true">◍</div><div class="metric-title">Punto di rugiada</div><div class="metric-value" id="dew">— <small>°C</small></div><div class="metric-note">Condensazione</div></div>
-  </div></div>
+<section class="container dashboard-top" id="misure" aria-label="Meteo in tempo reale">
+ <div class="dual-heading"><span aria-hidden="true">☁</span><h2>Meteo in tempo reale</h2></div>
+ <div class="dashboard-grid source-duo">
+   <article class="source-main-card underground-card" aria-label="Dati Weather Underground">
+     <div class="source-card-header">
+       <div class="source-brand"><span class="source-mark underground-mark" aria-hidden="true">WU</span><h3>Weather Underground</h3></div>
+       <a href="https://www.wunderground.com/dashboard/pws/IDALMI6" id="wu-public-link" target="_blank" rel="noopener noreferrer">Stazione IDALMI6 <span aria-hidden="true">↗</span></a>
+     </div>
+     <div class="underground-overview">
+       <div class="underground-primary">
+         <div class="underground-thermo"><span aria-hidden="true">🌡</span><span class="current-hero-value"><span id="hero-temp">—</span><small> °C</small></span></div>
+         <p>Temperatura esterna misurata</p>
+         <span class="under-info">Osservazioni locali · Bresser 7-in-1</span>
+       </div>
+       <dl class="underground-details">
+         <div><dt>♧ Umidità</dt><dd><span data-wu-field="humidity">—</span> %</dd></div>
+         <div><dt>◉ Pressione</dt><dd><span data-wu-field="pressure">—</span> hPa</dd></div>
+         <div><dt>≋ Vento</dt><dd><span data-wu-field="wind">—</span> km/h</dd></div>
+         <div><dt>☂ Pioggia oggi</dt><dd><span data-wu-field="rain">—</span> mm</dd></div>
+       </dl>
+     </div>
+     <div class="source-card-footer">Rilevazioni ricevute da Weather Underground. I dati possono avere qualche minuto di ritardo.</div>
+   </article>
+   <article class="source-main-card cloud-card" id="online" aria-label="Dati Weathercloud">
+     <div class="source-card-header">
+       <div class="source-brand"><span class="source-mark weathercloud-mark" aria-hidden="true">☁</span><h3>Weathercloud</h3></div>
+       <a href="https://app.weathercloud.net/d0069384413#current" target="_blank" rel="noopener noreferrer">Apri la stazione <span aria-hidden="true">↗</span></a>
+     </div>
+     <div class="cloud-widget-region">
+       <div class="widget weathercloud-widget" id="sticker-container"><div class="widget-content" id="sticker-target"><a href="https://app.weathercloud.net/d0069384413" target="_blank" rel="noopener noreferrer"><img id="wc-sticker" src="https://app.weathercloud.net/device/sticker/0069384413" alt="Osservazioni Weathercloud di Caelochronis" width="550" height="200" referrerpolicy="no-referrer-when-downgrade"></a></div><div id="sticker-fallback" class="sticker-fallback" hidden>Se il riquadro non si carica, apri <a href="https://app.weathercloud.net/d0069384413" target="_blank" rel="noopener noreferrer">le osservazioni su Weathercloud ↗</a> oppure incolla lo Sticker ufficiale dalle impostazioni della tua stazione.</div></div>
+     </div>
+     <div class="source-actions">
+       <a class="small-button" href="https://app.weathercloud.net/d0069384413#profile" target="_blank" rel="noopener noreferrer">Profilo Weathercloud ↗</a>
+       <button type="button" class="small-button" id="sticker-open">Personalizza il widget</button>
+     </div>
+     <div class="source-card-footer">Widget di Weathercloud: aggiornamenti e disponibilità indipendenti da Weather Underground.</div>
+   </article>
  </div>
- <div class="live-strip"><span><span id="status" class="live-indicator">● In attesa di dati</span> · <span id="updated-at">Rilevazione in caricamento</span></span><span class="station-connected">● Rilevazioni automatiche da Weather Underground</span></div>
- <p class="data-note" id="demo-note"><strong>Osservazioni della Bresser IDALMI6.</strong> I valori sono aggiornati automaticamente quando disponibili e non sono previsioni meteorologiche. Puoi <button type="button" class="text-button" id="demo-btn">visualizzare una dimostrazione con valori etichettati come esempio</button> oppure <button type="button" class="text-button" id="api-help">scoprire come funziona il collegamento</button>.</p>
+ <div class="metric-band-heading"><h3>Le misurazioni della stazione</h3><span>8 parametri · Fonte: Weather Underground</span></div>
+ <div class="metric-panel"><div class="metrics">
+ <div class="metric"><div class="metric-icon" aria-hidden="true">♨</div><div class="metric-title">Temperatura</div><div class="metric-value" id="temp">— <small>°C</small></div><div class="metric-note">Esterna</div></div>
+<div class="metric"><div class="metric-icon" aria-hidden="true">♧</div><div class="metric-title">Umidità</div><div class="metric-value" id="humidity">— <small>%</small></div><div class="metric-note">Relativa</div></div>
+<div class="metric"><div class="metric-icon" aria-hidden="true">◉</div><div class="metric-title">Pressione</div><div class="metric-value" id="pressure">— <small>hPa</small></div><div class="metric-note">Atmosferica</div></div>
+<div class="metric"><div class="metric-icon" aria-hidden="true">≋</div><div class="metric-title">Vento</div><div class="metric-value" id="wind">— <small>km/h</small></div><div class="metric-note">Velocità</div></div>
+<div class="metric"><div class="metric-icon" aria-hidden="true">☂</div><div class="metric-title">Pioggia</div><div class="metric-value" id="rain">— <small>mm</small></div><div class="metric-note">Accumulo odierno</div></div>
+<div class="metric"><div class="metric-icon" aria-hidden="true">☼</div><div class="metric-title">Indice UV</div><div class="metric-value" id="uv">—</div><div class="metric-note">Ultravioletti</div></div>
+<div class="metric"><div class="metric-icon" aria-hidden="true">✺</div><div class="metric-title">Radiazione</div><div class="metric-value" id="solar">— <small>W/m²</small></div><div class="metric-note">Solare</div></div>
+<div class="metric"><div class="metric-icon" aria-hidden="true">◍</div><div class="metric-title">Punto di rugiada</div><div class="metric-value" id="dew">— <small>°C</small></div><div class="metric-note">Condensazione</div></div>
+ </div></div>
+ <div class="live-strip"><span><span id="status" class="live-indicator">● In attesa di dati</span> · <span id="updated-at">Rilevazione in caricamento</span></span><span class="station-connected">Stazione meteorologica · Dalmine (BG)</span></div>
+ <p class="data-note" id="demo-note"><strong>Misurazioni reali della Bresser IDALMI6.</strong> Weather Underground e Weathercloud visualizzano i dati della stessa stazione attraverso due servizi indipendenti, con possibili differenze nei tempi di aggiornamento. Puoi <button type="button" class="text-button" id="demo-btn">visualizzare una dimostrazione con valori etichettati come esempio</button> oppure <button type="button" class="text-button" id="api-help">scoprire come funziona il collegamento</button>.</p>
 </section>
-
-<div class="container feature-row" aria-label="Esplora Caelochronis"><a class="feature-card" href="#misure"><span class="feature-art" aria-hidden="true">☁</span><div><div class="feature-title">Dati in tempo reale</div><div class="feature-desc">Le condizioni misurate dalla stazione.</div></div><span class="feature-arrow" aria-hidden="true">›</span></a><a class="feature-card" href="#andamenti"><span class="feature-art" aria-hidden="true">⌁</span><div><div class="feature-title">Statistiche</div><div class="feature-desc">Temperature, vento e grafici storici.</div></div><span class="feature-arrow" aria-hidden="true">›</span></a><a class="feature-card" href="#archivio"><span class="feature-art" aria-hidden="true">▤</span><div><div class="feature-title">Archivio</div><div class="feature-desc">Rilevazioni e riepiloghi nel tempo.</div></div><span class="feature-arrow" aria-hidden="true">›</span></a><a class="feature-card" href="#clima"><span class="feature-art" aria-hidden="true">⌖</span><div><div class="feature-title">Clima di Dalmine</div><div class="feature-desc">Osservazioni locali e stagioni.</div></div><span class="feature-arrow" aria-hidden="true">›</span></a><a class="feature-card" href="#stazione"><span class="feature-art" aria-hidden="true">⚙</span><div><div class="feature-title">La stazione</div><div class="feature-desc">Strumenti, sensori e progetto.</div></div><span class="feature-arrow" aria-hidden="true">›</span></a><a class="feature-card" href="#online"><span class="feature-art" aria-hidden="true">☀</span><div><div class="feature-title">Reti meteorologiche</div><div class="feature-desc">Weathercloud e Weather Underground.</div></div><span class="feature-arrow" aria-hidden="true">›</span></a></div>
+<div class="container feature-row" aria-label="Esplora Caelochronis"><a class="feature-card" href="#andamenti"><span class="feature-art" aria-hidden="true">⌁</span><div><div class="feature-title">Statistiche e grafici</div><div class="feature-desc">Temperature, vento e altri parametri nel tempo.</div></div><span class="feature-arrow" aria-hidden="true">›</span></a><a class="feature-card" href="#archivio"><span class="feature-art" aria-hidden="true">▤</span><div><div class="feature-title">Archivio meteorologico</div><div class="feature-desc">Lo storico delle osservazioni di Caelochronis.</div></div><span class="feature-arrow" aria-hidden="true">›</span></a><a class="feature-card" href="#clima"><span class="feature-art" aria-hidden="true">⌖</span><div><div class="feature-title">Clima di Dalmine</div><div class="feature-desc">Confronti e memoria del tempo locale.</div></div><span class="feature-arrow" aria-hidden="true">›</span></a><a class="feature-card" href="#stazione"><span class="feature-art" aria-hidden="true">⚙</span><div><div class="feature-title">La stazione</div><div class="feature-desc">La Bresser 7-in-1 e i suoi strumenti.</div></div><span class="feature-arrow" aria-hidden="true">›</span></a></div>
 
 <section class="container stats-stage" id="andamenti" aria-labelledby="historic-title">
  <article class="stats-card">
@@ -348,7 +463,6 @@ body{background:radial-gradient(ellipse at 50% 0%,#16395e 0,#071b32 38%,#041124 
   <div class="step"><div class="step-num">03</div><h3>La memoria del clima</h3><p>Le osservazioni vengono conservate per costruire gradualmente uno storico locale, utile per confronti, grafici e approfondimenti.</p><span class="step-tag">Archivio dal 2026</span></div>
  </div>
 </section>
-<section class="container section" id="online"><div class="section-head"><div><div class="eyebrow">Osservazioni in diretta</div><h2>Il meteo, adesso.</h2></div></div><div class="duo"><div class="card"><h3>In diretta da Dalmine</h3><p>Le rilevazioni pubblicate dalla nostra Bresser su Weathercloud. Gli aggiornamenti del piano Basic possono richiedere fino a circa 10 minuti.</p><div class="widget weathercloud-widget" id="sticker-container"><div class="widget-content" id="sticker-target"><a href="https://app.weathercloud.net/d0069384413" target="_blank" rel="noopener noreferrer"><img id="wc-sticker" src="https://app.weathercloud.net/device/sticker/0069384413" alt="Osservazioni Weathercloud di Caelochronis" width="550" height="200" referrerpolicy="no-referrer-when-downgrade"></a></div><div id="sticker-fallback" class="sticker-fallback" hidden>Se il riquadro non si carica, apri <a href="https://app.weathercloud.net/d0069384413" target="_blank" rel="noopener noreferrer">le osservazioni su Weathercloud ↗</a> oppure incolla lo Sticker ufficiale dalle impostazioni della tua stazione.</div></div><div class="source-actions"><a class="small-button" href="https://app.weathercloud.net/d0069384413#current" target="_blank" rel="noopener noreferrer">Apri tutti i dati ↗</a><button type="button" class="small-button" id="sticker-open">Personalizza il widget</button></div><div class="hint" style="margin-top:11px">Dati e disponibilità dipendono da Weathercloud. Nessuna chiave privata viene usata nel sito.</div></div><div class="card"><h3>Reti meteorologiche</h3><p>Le rilevazioni dell'osservatorio vengono condivise su piattaforme meteorologiche pubbliche.</p><div class="source-row"><div class="source-icon">☁</div><div class="source-text"><strong>Weathercloud</strong><span>Profilo ufficiale della stazione</span></div><a href="https://app.weathercloud.net/d0069384413#profile" target="_blank" rel="noopener">Apri ↗</a></div><div class="source-row"><div class="source-icon">≋</div><div class="source-text"><strong>Weather Underground</strong><span>Stazione IDALMI6 · osservazioni pubbliche</span></div><a href="https://www.wunderground.com/dashboard/pws/IDALMI6" target="_blank" rel="noopener noreferrer" id="wu-public-link">Visita ↗</a></div></div></div></section>
 <section class="container section about" id="chi-siamo"><div class="about-content"><div><div class="eyebrow">La nostra identità</div><h2>Una passione che diventa osservazione.</h2><p><strong>Caelochronis</strong> è una stazione meteorologica privata e indipendente situata a Dalmine, in provincia di Bergamo, Lombardia.</p><p>Nato nel novembre 2026, l'osservatorio si dedica al monitoraggio continuo delle condizioni atmosferiche locali attraverso una stazione <strong>Bresser Comfort WiFi 7-in-1</strong>.</p><p>Le rilevazioni comprendono temperatura, umidità, pressione atmosferica, precipitazioni, vento, radiazione solare e indice UV.</p><p>L'obiettivo è <strong>raccogliere, conservare e analizzare nel tempo</strong> i dati meteorologici, creando un archivio storico per osservare l'evoluzione delle condizioni atmosferiche locali.</p><p style="font-size:12px;color:#88a0b1">Le misurazioni hanno carattere amatoriale e non costituiscono informazioni meteorologiche ufficiali né avvisi di protezione civile.</p></div><div class="about-quote">“Il cielo, un dato alla volta.”</div></div></section>
 <section class="container section setup" id="integrazione"><div class="section-head"><div><div class="eyebrow">Dietro le quinte</div><h2>Un dato alla volta. Anche nella tecnologia.</h2><p class="section-sub">L'osservatorio è pronto per crescere senza rinunciare all'accuratezza delle misurazioni.</p></div></div><div class="setup-grid"><div class="step"><div class="step-num">01</div><h3>Weathercloud</h3><p>Lo Sticker mostra le osservazioni pubblicate dalla Bresser, senza inserire chiavi private nel sito.</p><span class="step-tag">Già predisposto</span></div><div class="step"><div class="step-num">02</div><h3>Weather Underground</h3><p>Un collegamento protetto legge le osservazioni di IDALMI6 e pubblica i valori sul nostro sito senza esporre chiavi private.</p><span class="step-tag">Collegamento attivo</span></div><div class="step"><div class="step-num">03</div><h3>Archivio</h3><p>Ogni mese conserviamo i CSV originali. Qui possiamo analizzare i file e salvarne un riepilogo.</p><span class="step-tag">Disponibile ora</span></div></div></section>
 </div>
@@ -382,6 +496,7 @@ body{background:radial-gradient(ellipse at 50% 0%,#16395e 0,#071b32 38%,#041124 
      if(unit){const small=document.createElement('small');small.textContent=' '+unit;el.append(small)}
    }
    $('hero-temp').textContent=(o.temp===null||o.temp===undefined||o.temp==='')?'—':String(o.temp);
+   document.querySelectorAll('[data-wu-field]').forEach(el=>{const n=o[el.dataset.wuField];el.textContent=(n===null||n===undefined||n==='')?'—':String(n);});
    if(sample){$('updated-at').textContent=isDemo?'Valori dimostrativi':'In attesa delle osservazioni';}
    $('status').textContent=sample?'● Dimostrazione · non in diretta':'● Dati aggiornati';
    $('status').classList.toggle('demo',sample);
