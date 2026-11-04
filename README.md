@@ -2,7 +2,7 @@
 
 Sito pubblico di Caelochronis, stazione meteorologica indipendente a Dalmine (BG).
 
-- Sito: https://botribor.github.io/osservatorio-aetheris/
+- Sito: https://botribor.github.io/caelochronis/
 - Weathercloud: https://app.weathercloud.net/d0069384413
 - Weather Underground: https://www.wunderground.com/dashboard/pws/IDALMI6
 
@@ -34,4 +34,4 @@ Marchio pubblico: **Caelochronis — Stazione Meteorologica Indipendente**. Mott
 Il nuovo emblema e la favicon sono in `assets/logo-caelochronis.webp` e `assets/favicon-caelochronis.webp`.
 Gli identificativi tecnici IDALMI6 e Weathercloud d0069384413 rimangono invariati.
 
-La vecchia denominazione può comparire ancora nell'URL GitHub e nei nomi interni dei workflow per compatibilità con i collegamenti esistenti. Le osservazioni storiche non vengono cancellate.
+Il repository deve essere rinominato da `osservatorio-aetheris` a `caelochronis` in **Settings → General → Repository name**. I file del sito e lo storico rimangono nel medesimo repository. Al termine, verificare GitHub Pages in **Settings → Pages** e il workflow in **Actions**. Gli indirizzi Weathercloud e Weather Underground utilizzano ID tecnici e non vanno modificati.
