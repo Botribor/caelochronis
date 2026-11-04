@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json.schemastore.org/wrangler.json",
+  "name": "caelochronis-meteo-scheduler",
+  "main": "src/worker.mjs",
+  "compatibility_date": "2026-11-04",
+  "workers_dev": true,
+  "triggers": {
+    "crons": ["2,12,22,32,42,52 * * * *"]
+  },
+  "observability": { "enabled": true }
+}
