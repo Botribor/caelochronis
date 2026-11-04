@@ -399,14 +399,22 @@ body{background:radial-gradient(ellipse at 50% 0%,#16395e 0,#071b32 38%,#041124 
      let res;try{res=await fetch(u.href,{cache:'no-store',signal:ctrl.signal})}finally{clearTimeout(timer)}
      if(!res.ok)throw Error('API '+res.status);
      const data=await res.json();if(!data||!data.observedAt)throw Error('Dati incompleti');
-     const age=Date.now()-Date.parse(data.observedAt);if(!(age>=0&&age<=60*60*1000))throw Error('Rilevazione non recente');
+     const age=Date.now()-Date.parse(data.observedAt);
+     if(!(age>=0&&age<=60*60*1000)){
+       if(!isDemo){
+         $('status').textContent='● Dati non aggiornati';
+         $('updated-at').textContent='Ultima rilevazione disponibile: '+new Date(data.observedAt).toLocaleString('it-IT',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'})+' · aggiornamento ritardato';
+         $('status').classList.add('demo');
+       }
+       return;
+     }
      const fmt=(v,d=1)=>v===null||v===undefined?null:Number(v).toLocaleString('it-IT',{minimumFractionDigits:d,maximumFractionDigits:d});
      const measured={temp:fmt(data.temp),humidity:fmt(data.humidity,0),pressure:fmt(data.pressure),wind:fmt(data.windSpeed),rain:fmt(data.precipTotal),uv:fmt(data.uv),solar:fmt(data.solarRadiation,0),dew:fmt(data.dewpt)};
      liveOkay=true;isDemo=false;renderMetrics(measured,false);
      $('demo-btn').textContent='visualizzare una dimostrazione con valori etichettati come esempio';
      $('status').textContent='● Dati reali · '+new Date(data.observedAt).toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'});
      $('updated-at').textContent='Ultimo aggiornamento: '+new Date(data.observedAt).toLocaleString('it-IT',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Rome'});
-   }catch(e){if(!liveOkay&&!isDemo){$('status').textContent='● Dati IDALMI6 non ancora disponibili';$('updated-at').textContent='Rilevazione non disponibile in questo momento';$('status').classList.remove('demo')}}
+   }catch(e){if(!isDemo){$('status').textContent='● Aggiornamento non disponibile';$('updated-at').textContent='Impossibile verificare gli ultimi dati · riprova a breve';$('status').classList.add('demo')}}
  }
  fetchLive();setInterval(fetchLive,5*60*1000);
  // Public Weathercloud sticker; official pasted embed takes priority if supplied.
