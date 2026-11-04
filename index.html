@@ -506,15 +506,37 @@ body{background:radial-gradient(ellipse at 50% 0%,#16395e 0,#071b32 38%,#041124 
  $('demo-btn').addEventListener('click',()=>{isDemo=!isDemo;if(isDemo){renderMetrics(demoValues,true);$('demo-btn').textContent='nascondere i valori dimostrativi'}else resetDemo()});
  $('api-help').addEventListener('click',()=>document.querySelector('#integrazione').scrollIntoView({behavior:'smooth'}));
  resetDemo();
+ // Se GitHub Pages ritarda una pubblicazione, consulta i dati pubblici
+ // del repository: la homepage continua a mostrare rilevazioni recenti.
+ const FALLBACK_METEO='https://raw.githubusercontent.com/Botribor/caelochronis/main/data/latest.json';
+ async function readPublicObservation(endpoint){
+   const u=new URL(endpoint,location.href);
+   if(u.protocol!=='https:'&&u.hostname!=='localhost')throw Error('Endpoint non sicuro');
+   u.searchParams.set('v',String(Date.now()));
+   const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),9000);
+   let res;
+   try{res=await fetch(u.href,{cache:'no-store',signal:ctrl.signal})}
+   finally{clearTimeout(timer)}
+   if(!res.ok)throw Error('API '+res.status);
+   const data=await res.json();
+   if(!data||data.stationId!=='IDALMI6'||!Number.isFinite(Date.parse(data.observedAt)))throw Error('Dati incompleti');
+   return data;
+ }
  async function fetchLive(){
    if(!CONFIG.apiEndpoint)return;
    try{
-     const u=new URL(CONFIG.apiEndpoint,location.href);
-     if(u.protocol!=='https:'&&u.hostname!=='localhost')return;
-     const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),9000);
-     let res;try{res=await fetch(u.href,{cache:'no-store',signal:ctrl.signal})}finally{clearTimeout(timer)}
-     if(!res.ok)throw Error('API '+res.status);
-     const data=await res.json();if(!data||!data.observedAt)throw Error('Dati incompleti');
+     let data=null;
+     try{data=await readPublicObservation(CONFIG.apiEndpoint)}
+     catch(e){ /* La pubblicazione Pages potrebbe essere temporaneamente indisponibile. */ }
+     // Se i dati del sito sono vecchi di oltre 16 minuti, prova la fonte GitHub.
+     const eta=data?Date.now()-Date.parse(data.observedAt):Infinity;
+     if(eta>16*60*1000||eta<0){
+       try{
+         const recenti=await readPublicObservation(FALLBACK_METEO);
+         if(!data||Date.parse(recenti.observedAt)>Date.parse(data.observedAt))data=recenti;
+       }catch(e){ /* Mantieni i dati Pages se disponibili. */ }
+     }
+     if(!data)throw Error('Rilevazioni non disponibili');
      const age=Date.now()-Date.parse(data.observedAt);
      if(!(age>=0&&age<=60*60*1000)){
        if(!isDemo){
