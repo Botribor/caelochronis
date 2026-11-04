@@ -2,14 +2,14 @@ name: Aggiorna dati meteo Caelochronis
 
 on:
   schedule:
-    - cron: '*/20 * * * *'
+    - cron: '7,27,47 * * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: aetheris-weather-update
+  group: caelochronis-weather-update
   cancel-in-progress: false
 
 jobs:
@@ -29,7 +29,7 @@ jobs:
       - name: Pubblica il JSON aggiornato
         run: |
           if [ -n "$(git status --porcelain -- data/latest.json data/history/)" ]; then
-            git config user.name 'aetheris-weather-bot'
+            git config user.name 'caelochronis-weather-bot'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
             git add data/latest.json data/history/
             git commit -m 'Aggiorna osservazioni meteo IDALMI6'
