@@ -35,3 +35,9 @@ Il nuovo emblema e la favicon sono in `assets/logo-caelochronis.webp` e `assets/
 Gli identificativi tecnici IDALMI6 e Weathercloud d0069384413 rimangono invariati.
 
 Il repository deve essere rinominato da `osservatorio-aetheris` a `caelochronis` in **Settings → General → Repository name**. I file del sito e lo storico rimangono nel medesimo repository. Al termine, verificare GitHub Pages in **Settings → Pages** e il workflow in **Actions**. Gli indirizzi Weathercloud e Weather Underground utilizzano ID tecnici e non vanno modificati.
+
+## Raccolta meteo più regolare (Cloudflare Workers)
+
+Il repository include una soluzione opzionale per tentare un aggiornamento ogni **10 minuti** tramite Cloudflare Cron Triggers, senza trasferire la chiave Weather Underground da GitHub. Consulta la [guida di attivazione](cloudflare/README.md) e il codice in `cloudflare/src/worker.mjs`.
+
+**Stato:** codice e test pronti; attivazione Cloudflare e inserimento del Secret `GITHUB_ACTIONS_TOKEN` da completare nell'account del proprietario. Il precedente `schedule` GitHub resta attivo finché il nuovo sistema non è verificato.
