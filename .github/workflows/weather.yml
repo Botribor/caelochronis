@@ -2,7 +2,7 @@ name: Aggiorna dati meteo Caelochronis
 
 on:
   schedule:
-    - # Backup: una volta al giorno, nel caso Cloudflare sia indisponibile.
+    # Backup: una volta al giorno, nel caso Cloudflare sia indisponibile.
     # Aggiornamenti ordinari ogni 10 minuti: Cloudflare -> workflow_dispatch.
     - cron: '7 3 * * *'
   workflow_dispatch:
