@@ -1,9 +1,9 @@
 {
   "stationId": "IDALMI6",
   "source": "Weather Underground PWS",
-  "observedAt": "2026-11-06T18:32:04Z",
+  "observedAt": "2026-11-06T18:42:04Z",
   "temp": 8.8,
-  "humidity": 87.0,
+  "humidity": 88.0,
   "pressure": 1014.56,
   "windSpeed": 0.0,
   "windGust": 0.0,
@@ -12,5 +12,5 @@
   "precipRate": 0.0,
   "uv": 0.0,
   "solarRadiation": 0.0,
-  "dewpt": 6.7
+  "dewpt": 6.8
 }
