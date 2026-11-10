@@ -2494,5 +2494,21 @@
     "uv": 2.0,
     "solarRadiation": 118.6,
     "dewpt": 8.0
+  },
+  {
+    "stationId": "IDALMI6",
+    "source": "Weather Underground PWS",
+    "observedAt": "2026-11-10T11:02:07Z",
+    "temp": 10.3,
+    "humidity": 86.0,
+    "pressure": 1007.79,
+    "windSpeed": 0.0,
+    "windGust": 0.0,
+    "winddir": 300.0,
+    "precipTotal": 0.79,
+    "precipRate": 0.0,
+    "uv": 1.7,
+    "solarRadiation": 134.1,
+    "dewpt": 7.9
   }
 ]
