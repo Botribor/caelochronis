@@ -24,32 +24,35 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Leggi la stazione IDALMI6
+      - name: Raccogli e pubblica i dati senza conflitti
         env:
           WU_API_KEY: ${{ secrets.WU_API_KEY }}
-        run: python scripts/fetch_weather.py
-      - name: Pubblica il JSON aggiornato
+        shell: bash
         run: |
-          if [ -n "$(git status --porcelain -- data/latest.json data/history/)" ]; then
-            git config user.name 'caelochronis-weather-bot'
-            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          set -euo pipefail
+          git config user.name 'caelochronis-weather-bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          # Leggi sempre il branch aggiornato PRIMA di modificare dati/latest.json
+          # e lo storico. Se qualcun altro salva nel frattempo, riparti dalla
+          # versione più recente e ricalcola i dati; non usare git rebase sui JSON.
+          for tentativo in 1 2 3 4; do
+            git fetch --no-tags origin main
+            git reset --hard origin/main
+            python scripts/fetch_weather.py
+            if [ -z "$(git status --porcelain -- data/latest.json data/history/)" ]; then
+              echo 'Dati già aggiornati: nessuna modifica da pubblicare.'
+              exit 0
+            fi
             git add data/latest.json data/history/
             git commit -m 'Aggiorna osservazioni meteo IDALMI6'
-            # Il sito può essere modificato mentre si leggono i dati.
-            # Reintegra la punta del branch e ritenta un push fast-forward.
-            for tentativo in 1 2 3; do
-              git fetch origin main
-              git rebase origin/main
-              if git push origin HEAD:main; then
-                echo "Dati meteorologici pubblicati (tentativo $tentativo)."
-                break
-              fi
-              if [ "$tentativo" -eq 3 ]; then
-                echo "::error::GitHub ha rifiutato il push dopo 3 tentativi."
-                exit 1
-              fi
-              sleep 3
-            done
-          else
-            echo 'Nessun aggiornamento da pubblicare.'
-          fi
+            if git push origin HEAD:main; then
+              echo "Dati meteorologici pubblicati (tentativo $tentativo)."
+              exit 0
+            fi
+            if [ "$tentativo" -eq 4 ]; then
+              echo "::error::Push non riuscito dopo 4 tentativi."
+              exit 1
+            fi
+            echo "Il branch è cambiato durante il salvataggio: riprovo."
+            sleep 3
+          done
